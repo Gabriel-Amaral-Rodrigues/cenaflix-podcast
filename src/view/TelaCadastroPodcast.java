@@ -99,7 +99,15 @@ public class TelaCadastroPodcast extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+Podcast p = new Podcast();
+p.setNome(txtNomeEpisodio.getText());
+p.setNumero(Integer.parseInt(txtNumeroEpisodio.getText()));
+p.setDuracao(txtDuracao.getText());
+p.setProdutor(txtProdutor.getText());
+p.setUrlRepositorio(txtUrlRepositorio.getText());
 
+UsuarioController controller = new UsuarioController();
+controller.salvar(p);
         model.Podcast p = new model.Podcast();
 
 // pega os valores da tela
