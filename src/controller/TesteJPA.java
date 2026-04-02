@@ -6,8 +6,7 @@ import util.JPAUtil;
 
 public class TesteJPA {
 
-    public static void main(String[] args) {
-
+    new TelaCadastroPodcast().setVisible(true);
         EntityManager em = JPAUtil.getEntityManager();
 
         Podcast p = new Podcast();
