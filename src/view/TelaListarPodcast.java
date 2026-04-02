@@ -17,6 +17,7 @@ public class TelaListarPodcast extends javax.swing.JFrame {
      */
     public TelaListarPodcast() {
     initComponents();
+
     btnBuscarActionPerformed(null);
 }
 
