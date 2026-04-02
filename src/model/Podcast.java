@@ -15,22 +15,56 @@ public class Podcast {
     private String duracao;
     private String urlRepositorio;
 
+    // 🔥 NOVO CAMPO
+    private String status;
+
     public Podcast() {}
 
-    public Long getId() { return id; }
+    public Long getId() { 
+        return id; 
+    }
 
-    public String getProdutor() { return produtor; }
-    public void setProdutor(String produtor) { this.produtor = produtor; }
+    public String getProdutor() { 
+        return produtor; 
+    }
+    public void setProdutor(String produtor) { 
+        this.produtor = produtor; 
+    }
 
-    public String getNomeEpisodio() { return nomeEpisodio; }
-    public void setNomeEpisodio(String nomeEpisodio) { this.nomeEpisodio = nomeEpisodio; }
+    public String getNomeEpisodio() { 
+        return nomeEpisodio; 
+    }
+    public void setNomeEpisodio(String nomeEpisodio) { 
+        this.nomeEpisodio = nomeEpisodio; 
+    }
 
-    public Integer getNumeroEpisodio() { return numeroEpisodio; }
-    public void setNumeroEpisodio(Integer numeroEpisodio) { this.numeroEpisodio = numeroEpisodio; }
+    public Integer getNumeroEpisodio() { 
+        return numeroEpisodio; 
+    }
+    public void setNumeroEpisodio(Integer numeroEpisodio) { 
+        this.numeroEpisodio = numeroEpisodio; 
+    }
 
-    public String getDuracao() { return duracao; }
-    public void setDuracao(String duracao) { this.duracao = duracao; }
+    public String getDuracao() { 
+        return duracao; 
+    }
+    public void setDuracao(String duracao) { 
+        this.duracao = duracao; 
+    }
 
-    public String getUrlRepositorio() { return urlRepositorio; }
-    public void setUrlRepositorio(String urlRepositorio) { this.urlRepositorio = urlRepositorio; }
+    public String getUrlRepositorio() { 
+        return urlRepositorio; 
+    }
+    public void setUrlRepositorio(String urlRepositorio) { 
+        this.urlRepositorio = urlRepositorio; 
+    }
+
+    // 🔥 GET E SET DO STATUS
+    public String getStatus() { 
+        return status; 
+    }
+
+    public void setStatus(String status) { 
+        this.status = status; 
+    }
 }
