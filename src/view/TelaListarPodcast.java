@@ -35,6 +35,7 @@ public class TelaListarPodcast extends javax.swing.JFrame {
         txtFiltroProdutor = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +59,9 @@ public class TelaListarPodcast extends javax.swing.JFrame {
 
         jLabel1.setText("Procurar por nome:");
 
+        jButton1.setText("Vender");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,6 +73,8 @@ public class TelaListarPodcast extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFiltroProdutor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBuscar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -83,7 +89,8 @@ public class TelaListarPodcast extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFiltroProdutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addGap(17, 17, 17))
         );
 
@@ -127,6 +134,31 @@ public class TelaListarPodcast extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFiltroProdutorActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+int linha = tabelaPodcast.getSelectedRow();
+
+if (linha == -1) {
+    javax.swing.JOptionPane.showMessageDialog(null, "Selecione um item!");
+    return;
+}
+
+Long id = Long.valueOf(tabelaPodcast.getValueAt(linha, 0).toString());
+
+javax.persistence.EntityManager em = util.JPAUtil.getEntityManager();
+em.getTransaction().begin();
+
+model.Podcast p = em.find(model.Podcast.class, id);
+p.setStatus("Vendido");
+
+em.merge(p);
+em.getTransaction().commit();
+
+javax.swing.JOptionPane.showMessageDialog(null, "Podcast vendido!");
+
+// Atualiza tabela
+btnBuscarActionPerformed(null);       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +186,7 @@ public class TelaListarPodcast extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaPodcast;
